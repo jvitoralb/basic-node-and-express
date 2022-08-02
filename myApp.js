@@ -1,4 +1,4 @@
-require('dotenv').config()
+let dotenv = require('dotenv').config()
 let express = require('express');
 let app = express();
 
@@ -13,11 +13,11 @@ app.use('/public', express.static(__dirname + '/public'));
 
 app.get('/json', (req, res) => {
     const message = {"message": "Hello json"};
-    res.send(process.env.MESSAGE_STYLE)
+    res.send(dotenv)
     // if (process.env.MESSAGE_STYLE === 'uppercase') {
     //     message["message"] = message["message"].toLocaleUpperCase();
     // }
-    // return res.json(message);
+    // res.json(message);
 });
 
 
