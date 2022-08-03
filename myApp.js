@@ -5,7 +5,7 @@ let app = express();
 app.use((req, res, next) => {
     console.log(`${req.method} ${req.path} - ${req.ip}`);
     next();
-})
+});
 
 console.log('Hello World');
 
@@ -30,6 +30,10 @@ app.get('/now', (req, res, next) => {
     next();
 }, (req, res) => {
     res.json({"time": req.time});
+});
+
+app.get('/:word/echo', (req, res) => {
+    res.json(req.params)
 });
 
 
