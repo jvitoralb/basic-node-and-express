@@ -37,10 +37,9 @@ app.get('/:word/echo', (req, res) => {
     res.json({"echo": req.params.word});
 });
 
-app.route('/name').all((req, res, next) => {
-    bodyParser.urlencoded({extended: false});
-    next();
-}).get((req, res) => {
+app.use(bodyParser.urlencoded({extended: false}))
+
+app.route('/name').get((req, res) => {
     let firstName = req.query.first;
     let lastName = req.query.last;
     res.json({"name": `${firstName} ${lastName}`});
